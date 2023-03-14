@@ -3,7 +3,7 @@ import { UserService } from './user.service';
 import { empty, from, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
-xdescribe('UsersComponent', () => {
+describe('UsersComponent', () => {
   let component: UsersComponent; 
   let service: UserService;
   let http: HttpClient;
