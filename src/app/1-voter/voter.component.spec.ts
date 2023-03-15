@@ -28,4 +28,21 @@ describe('VoterComponent', () => {
 
     expect(el.innerText).toContain('21');
   });
+
+  it('should add highlight class while upvoted', () => {
+    component.myVote = 1;
+    fixture.detectChanges();
+    let de = fixture.debugElement.query(By.css('.glyphicon-menu-up'));
+
+    expect(de.classes['highlighted']).toBeTruthy();
+  });
+
+  it('should be calling upVote on click of the link', ()=> {
+    fixture.detectChanges();
+    let de = fixture.debugElement.query(By.css('.glyphicon-menu-up'));
+
+    de.triggerEventHandler('click', null);
+
+    expect(component.myVote).toBe(1);
+  });
 });
