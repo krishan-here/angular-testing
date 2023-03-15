@@ -1,25 +1,26 @@
 import { Injectable } from '@angular/core'; 
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class TodoService { 
-  constructor(private http: Http) { 
+	private _url = "http://jsonplaceholder.typicode.com/users";
+
+  constructor(private http: HttpClient) { 
   }
 
   add(todo) {
-    return this.http.post('...', todo).map(r => r.json());
+    return this.http.post(this._url, todo);
   }
 
   getTodos() { 
-    return this.http.get('...').map(r => r.json());
+    return this.http.get(this._url);
   }
 
   getTodosPromise() {
-    return this.http.get('...').map(r => r.json()).toPromise();
+    return this.http.get(this._url);
   }
 
   delete(id) {
-    return this.http.delete('...').map(r => r.json());
+    return this.http.delete(this._url);
   }
 }
